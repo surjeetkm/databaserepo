@@ -1,9 +1,13 @@
 package com.db;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.domain.Customer;
@@ -32,5 +36,15 @@ public class CustomerResource {
 		Employee emp=new Employee("Jagdish","Mohanty");
 		employeerepo.save(emp);
 		return "Customers are created";
+	}
+	@RequestMapping(value="/getcust/{id}",method=RequestMethod.GET)
+	public Customer getCustomer(@PathVariable("id") int id) {
+		System.out.println("================Find By Id==========================");
+		return repository.findById(id).get();
+	}
+	@RequestMapping(value="/getallcust",method=RequestMethod.GET)
+	public List<Customer> getAllCustomer() {
+		System.out.println("================Find By Id==========================");
+		return repository.findAll();
 	}
 }
