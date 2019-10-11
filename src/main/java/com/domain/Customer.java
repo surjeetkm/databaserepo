@@ -15,11 +15,12 @@ public class Customer implements Serializable {
 	private static final long serialVersionUID = -2343243243242432341L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private int id;
 	@Column(name = "firstname")
 	private String firstName;
 	@Column(name = "lastname")
 	private String lastName;
+	public Customer() {}
 	public Customer(String fname,String lname) {
 		this.firstName=fname;
 		this.lastName=lname;
@@ -27,7 +28,7 @@ public class Customer implements Serializable {
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getFirstName() {
